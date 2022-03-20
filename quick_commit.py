@@ -29,3 +29,4 @@ if not input("Confirm with [y/n]: ").lower() == "y":
 os.system("git add {}".format(" ".join(commit_files)))
 os.system('git commit -m "post: {}"'.format(filename))
 os.system('git push origin main')
+os.system('git pull')
