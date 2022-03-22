@@ -3,6 +3,9 @@
 import os
 import re
 
+if 'y' != input('Update README... Are you sure? [y/n]: '):
+    quit()
+
 root = 'https://juhaoliang1997.github.io/'
 # header
 header = "# [**JuhaoLiang Blog**]({})".format(root)
