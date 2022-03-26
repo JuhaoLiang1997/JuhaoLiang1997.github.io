@@ -10,7 +10,7 @@ def stop_commit():
 os.system("git reset HEAD")
 print("git reset HEAD...")
 status = os.popen("git status -su").readlines()
-files = [s.split()[-1].strip() for s in status]
+files = [s.split('?? ')[-1].strip() for s in status]
 images = [f for f in files if f.startswith('_images/')]
 posts = [f for f in files if f.startswith('_posts/')]
 
@@ -20,7 +20,7 @@ if i > len(posts):
     stop_commit()
 
 filename = re.search(r'\/(.+?)\.md', posts[i]).group(1)
-commit_files = [f for f in files if filename in f]
+commit_files = [f for f in posts if filename in f] + ['_images/{}/*'.format(filename)]
 print("Committing following files: ")
 print("\n".join(commit_files))
 if not input("Confirm with [y/n]: ").lower() == "y":
